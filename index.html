@@ -1,0 +1,284 @@
+# Portfolio Website: Modularer Code-Export
+
+Hier findest du die vollständige, modularisierte Struktur deiner One-Page-Website. Ich habe den Code in HTML, CSS und
+JavaScript aufgeteilt und ausführlich kommentiert, damit du Änderungen leicht vornehmen kannst.
+
+## 1. HTML (`index.html`)
+Die Hauptstruktur mit allen Sektionen (Hero, Works, About, Contact) und dem Overlay-Container.
+
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Designer Portfolio | One-Page</title>
+    <!-- Tailwind CSS für schnelles Styling & Layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Eigene CSS Datei -->
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-[#0d1512] text-white font-inter antialiased">
+
+    <!-- NAVIGATION: Fixed Header -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0d1512]/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter text-[var(--primary-color)]">NICOLAI DOMINIK PFRENGLE</div>
+            <!-- Anker-Links für One-Page Navigation -->
+            <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <a href="#home" class="hover:text-[var(--primary-color)] transition-colors">Home</a>
+                <a href="#work" class="hover:text-[var(--primary-color)] transition-colors">Work</a>
+                <a href="#about" class="hover:text-[var(--primary-color)] transition-colors">About</a>
+                <a href="#contact" class="hover:text-[var(--primary-color)] transition-colors">Contact</a>
+            </div>
+            <button class="btn-primary px-6 py-2 rounded-full text-xs font-bold uppercase">Hire Me</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION mit Video-Einbettung -->
+    <section id="home" class="pt-10 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight">
+                Irgendwas<br> <span class="text-[var(--primary-color)]">mit Medien.</span>
+            </h1>
+            
+            <!-- VIDEO EMBED: Vorstellungsvideo -->
+            <div
+            class="video-container max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video relative group cursor-pointer">
+            <!-- Ersetze 'VIDEO_ID' durch deine YouTube/Vimeo ID -->
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/k9abyMlStFs?autoplay=0&controls=1&rel=0"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+<p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+    Media Designer spezialisiert auf immersive digitale Erlebnisse durch High-Fidelity Motion Design und
+    Licht.
+</p>
+</section>
+
+    <!-- SELECTED WORKS: Mit Filter-Logik -->
+    <section id="work" class="py-24 px-6 bg-[#08100d]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-4xl font-black mb-4">Selected Works</h2>
+                    <p class="text-gray-500">Eine kuratierte Sammlung meiner besten Projekte.</p>
+                </div>
+                <!-- Filter-Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn active" data-filter="all">Alle</button>
+                    <button class="filter-btn" data-filter="film">Filme</button>
+                    <button class="filter-btn" data-filter="animation">Animation</button>
+                    <button class="filter-btn" data-filter="illustration">Illustration</button>
+                </div>
+            </div>
+
+<!-- Projekt-Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Beispiel-Projekt 1 -->
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('cursed-chronicles')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/IMG/titlecard_cursed_chronicles.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Cursed Chronicles: Sleeping Beauty</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Short Film / Animation</p>
+                </div>
+                <!-- Weitere Projekte hier einfügen... -->
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('rrh-design')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/cursedchronices/rrh_all_characters.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Cursed Chronicles: Red Riding Hood</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Character Design</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('login')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/IMG/titlecard_login.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">LOGIN</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Short Film</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('expert-views')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/IMG/titlecard_expert-view.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">PTV Expert Views</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Corporate Video Series</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('logo-designs')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/crow_sigil_full_render_1000x1000.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Logo Designs</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Illustration</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('leech')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/leech/avatar_circle_dark_dropshadow_small.png" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Twitch Branding</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Illustration / Graphic Design / Branding</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('short-animations')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/IMG/titlecard_short-animations.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Short Animations</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Graphic Design / Animation</p>
+                </div>
+
+                <div class="project-card group cursor-pointer" data-category="film" onclick="openOverlay('digital-drawings')">
+                    <div
+                        class="aspect-video bg-zinc-900 rounded-xl overflow-hidden border border-white/5 mb-4 relative">
+                        <img src="./media/digital_drawing/hollowknight.jpg" alt="Cursed Chronicles"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-[var(--primary-color)] font-bold">View Project</span>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-lg">Digital Drawing</h3>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Illustration</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & CONTACT: Layout mit Bild rechts -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <!-- Text & Kontakt (Links) -->
+            <div id="contact">
+                <h2 class="text-5xl font-black mb-8 leading-tight">Crafting <br><span
+                        class="text-[var(--primary-color)]">Cinematic</span> Narratives.</h2>
+                <p class="text-gray-400 mb-10 leading-relaxed">
+                    Ich bin Lead Media Designer mit Fokus auf die Schnittstelle zwischen technischer Präzision und
+                    emotionalem Storytelling. Mein Ziel ist es, Grenzen im digitalen Raum zu verschieben.
+                </p>
+
+                <!-- Kontakt-Formular -->
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="Name" class="form-input">
+                        <input type="email" placeholder="Email" class="form-input">
+                    </div>
+                    <textarea placeholder="Deine Nachricht" class="form-input h-32"></textarea>
+                    <button type="submit"
+                        class="btn-primary w-full py-4 rounded-xl font-bold uppercase tracking-widest">Send
+                        Message</button>
+                </form>
+            </div>
+
+            <!-- Profilbild (Rechts) -->
+            <div class="relative">
+                <div
+                    class="rounded-2xl overflow-hidden border border-white/10">
+                    <img src="./media/IMG/hero_page_picture.jpg" alt="Profilbild" class="w-full">
+                </div>
+                <!-- Badge/Metrik -->
+                <div class="absolute -bottom-8 -left-8 bg-[var(--primary-color)] text-[#0d1512] p-8 rounded-2xl shadow-xl">
+                    <div class="text-4xl font-black">1.0</div>
+                    <div class="text-[10px] font-bold uppercase tracking-widest opacity-80">Abschlussnote</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 border-t border-white/5 px-6 text-center">
+        <div class="text-[var(--primary-color)] font-black text-xl mb-8">NICOLAI DOMINIK PFRENGLE</div>
+        <div class="flex justify-center gap-8 mb-12 text-xs font-bold uppercase tracking-widest text-gray-500">
+            <a href="#" class="hover:text-white">Vimeo</a>
+            <a href="#" class="hover:text-white">LinkedIn</a>
+            <a href="#" class="hover:text-white">ArtStation</a>
+        </div>
+        <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2024 CINEMATIC PORTFOLIO. ALL RIGHTS RESERVED.
+        </p>
+    </footer>
+
+    <!-- PROJECT OVERLAY (MODAL) -->
+    <div id="project-overlay" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop: Dunkelt Hintergrund ab -->
+        <div class="absolute inset-0 bg-[#0d1512]/95 backdrop-blur-xl" onclick="closeOverlay()"></div>
+
+        <!-- Content Container: Scrollbar -->
+        <div class="relative h-full overflow-y-auto pt-20 pb-40 px-6">
+            <div class="max-w-4xl mx-auto bg-[#151d1a] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                <!-- Close Button -->
+                <button class="absolute top-8 right-8 text-white/50 hover:text-white z-50 bg-black/20 p-2 rounded-full"
+                    onclick="closeOverlay()">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+
+                <div id="overlay-content">
+                    <!-- Inhalt wird via JS dynamisch geladen -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Eigene Script Datei -->
+
+</body>
+
+</html>
